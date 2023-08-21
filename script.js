@@ -50,9 +50,36 @@ function createCard(title1,author1,pages1)
   card.innerHTML = 
   `
     <h1>${title1}</h1>
-    <h3>Author: ${author1} </h3>
-    <h3>Number of Pages: ${pages1} </h3>
+    <h3>By: ${author1} </h3>
+    <h3>Pages: ${pages1} </h3>
+    <div class="delread">
+      <button class="delbutton">Delete Book</button>
+      <button class="readbutton read delbutton">Read</button>
+    </div>
   `;
+  card.querySelector('.delbutton').addEventListener('click',() => {card.remove();});
+
+  card.querySelector('.read').addEventListener('click',() => {
+    var rdbtn = card.querySelector(".readbutton");
+    if (rdbtn.classList.contains('read'))
+      {rdbtn.textContent = 'Unread'
+      rdbtn.classList.remove('read')
+      rdbtn.classList.add('unread')}
+    else
+      {
+        rdbtn.textContent = 'Read'
+        rdbtn.classList.remove('unread')
+        rdbtn.classList.add('read')
+      }
+
+    });
+
+
+  
+
 
   return card;
 }
+
+
+
